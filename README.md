@@ -2,25 +2,28 @@
 
 An export facility for StepMania songs to Google Sheets
 
-Python 3.9.4, Windows
+Windows only
 
 ## Installation
 
-Place the Songs to Sheet folder in your StepMania top level directory (the one with _Songs_)
+1. Download the latest zip from Releases
+
+2. Extract the "Songs to Sheet" folder in your StepMania top level folder (the one with the "Songs" folder)
 
 ## Usage
 
 ### Run "Songs to Sheet.exe"
 
-* Data files (CSV) will be placed in a folder called "output" (eg. "Songs to Sheet/output/Singles.csv")
+* Data files (CSV) will be placed in the "output" folder (eg. "Songs to Sheet/output/Singles.csv")
 
 ### Import selected data file into Google sheets
 
 1. Open your [Google Drive](https://drive.google.com)
-2. Open a spreadsheet (or create new, _New_ -> _Google Sheet_)
+2. Open a spreadsheet or create new (_New_ -> _Google Sheet_)
 3. _File_ -> _Import_ -> _Upload_
    * Navigate to your selected CSV file ("Songs to Sheet/output") and select it for import.
 4. In the _Import file_ window
+
 __NOTE__: Google Drive will leave a copy of the CSV file laying around, it can be removed after import
 
    * Choose _Import location_
@@ -30,6 +33,7 @@ __NOTE__: Google Drive will leave a copy of the CSV file laying around, it can b
    * Repeat for each selected file
 
 ### Use the provided macro to format your sheet
+
 __NOTE__: The macro is deemed "unsafe" by Google because it hasn't passed through their verification process.
 If you're unsure about using it, skip it and format the sheet manually.
 
