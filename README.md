@@ -4,11 +4,12 @@ An export facility for StepMania songs to Google Sheets.
 
 ## Installation
 
-Place _Songs to Sheet_ in your StepMania top level directory (the one with _Songs_).
+Place the Songs to Sheet folder in your StepMania top level directory (the one with _Songs_).
 
 ## Usage
 
-### 1. Run _Songs to Sheet.exe_. Data files (CSV) will be created and placed in _output_ (eg. _Songs to Sheet/output/Singles.csv_)
+### 1. Run _Songs to Sheet.exe_
+* Data files (CSV) will be placed in "Songs to Sheet/output" (eg. "Songs to Sheet/output/Singles.csv")
 
 ### 2. Import selected CSV file into Google sheets
 * Open your [Google Drive](https://drive.google.com).
@@ -24,9 +25,10 @@ Place _Songs to Sheet_ in your StepMania top level directory (the one with _Song
    * NOTE: Google Drive will leave a copy of the CSV laying around, it can be removed after import
 
 ### 3. Use the provided macro to format your sheet
-* NOTE: The macro is deemed "unsafe" by Google because it hasn't passed through their verification process.
-         If you're unsure about using it, feel free to skip this.
-* Open your Google Sheet to format
+__NOTE__: The macro is deemed "unsafe" by Google because it hasn't passed through their verification process.
+If you're unsure about using it, feel free to skip this.
+
+* Open your Google Sheet you wish to format
 * _Tools_ -> _Script Editor_
 * Click _Untitled Project_ at the top to rename the project to something memorable
 * On the left, rename _code.gs_ to _macros.gs_ (click the 3 dots on hover)
