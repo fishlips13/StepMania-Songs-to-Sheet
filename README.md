@@ -1,11 +1,12 @@
 # StepMania 5 Songs to Sheet
 
-An export facility for StepMania songs to Google Sheets.
+An export facility for StepMania songs to Google Sheets
+
 Python 3.9.4, Windows
 
 ## Installation
 
-Place the Songs to Sheet folder in your StepMania top level directory (the one with _Songs_).
+Place the Songs to Sheet folder in your StepMania top level directory (the one with _Songs_)
 
 ## Usage
 
