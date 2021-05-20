@@ -1,0 +1,51 @@
+function formatSongSheet() {
+
+  // Title, artist and song pack widths
+  detailsWidth = 200;
+
+  // Other widths
+  othersWidth = 65;
+
+  // Difficulty colours
+  noviceColour = '#b4a7d6';
+  easyColour   = '#b6d7a8';
+  mediumColour = '#fff2cc';
+  hardColour   = '#f4cccc';
+  expertColour = '#cfe2f3';
+  editColour   = '#cfe2f3';
+
+  // ----------------------------------------------
+  
+  sheet = SpreadsheetApp.getActiveSheet();
+
+  // Headings (freeze and bold)
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, 1, 11).setTextStyle(SpreadsheetApp.newTextStyle().setBold(true).build());
+
+  // Title/artist/pack as plain text
+  var songDetails = sheet.getRange('A:D');
+  songDetails.setNumberFormat('@');
+  songDetails.setShowHyperlink(false);
+
+  // Time auto-formatting fix (fake hours/minutes, but it looks fine)
+  sheet.getRange('E2:E').setNumberFormat('h:mm');
+
+  // Colours
+  sheet.getRange('F:F').setBackground(noviceColour);
+  sheet.getRange('G:G').setBackground(easyColour);
+  sheet.getRange('H:H').setBackground(mediumColour);
+  sheet.getRange('I:I').setBackground(hardColour);
+  sheet.getRange('J:J').setBackground(expertColour);
+  sheet.getRange('K:K').setBackground(editColour);
+  
+  // Cell widths
+  for (i = 1; i <= 4; i++){
+    sheet.setColumnWidth(i, detailsWidth);
+  }
+  for (i = 5; i <= 11; i++){
+    sheet.setColumnWidth(i, othersWidth);
+  }
+
+  // Sort by Song Pack then Title (transliterated)
+  sheet.sort(2).sort(4);
+};

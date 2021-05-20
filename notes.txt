@@ -1,0 +1,98 @@
+all segments begin with '#'
+all segments names CAPITALISED and end with ':'
+all segments end with ';'
+some segments are ',' separated
+
++ title
+#TITLE:ABSOLUTE;
+
++ titletranslit
+#TITLETRANSLIT:example;
+
++ artist
+#ARTIST:dj TAKA;
+
++ song pack
+(the name of the containing folder)
+
++ dwi music file location
+#FILE:.\SONGS\DANCE DANCE REVOLUTION 2ND MIX\BRILLIANT 2U\BRILLIANT 2U.MP3;
+or 
+#FILE:JERK IT OUT.mp3;
+(relative to dwi dir *or* relative to base StepMania folder, ie. 3 folders up)
+
++ ssc/sm music file location
+#MUSIC:../Hasse Mich/Hasse Mich.ogg;
+or
+#MUSIC:Cirno's Perfect Math Class.ogg;
+(relative to ssc/sm dir)
+
++ undefined music file location
+(if no music file is defined, StepMania will find on in the song definition folder, ogg > wav > mp3)
+
++ ssc/sm BPM
+#BPMS:0.000=280.000,320.000=140.000,324.000=280.000,379.000=140.000,383.000=280.000,439.000=140.000,443.000=280.000;
+(comma separated, can be single)
+(timestamp=BPM,timestamp=BPM)
+
++ dwi BPM
+#BPM:116.07;
+
+---------------------------------------
+
++ dwi (just a number)
+#SINGLE:SMANIAC:8:1234567890...
+(#type:difficulty:meter:stepdata)
+
+---
+SINGLE
+DOUBLE
+---
+BEGINNER
+BASIC
+ANOTHER
+MANIAC
+SMANIAC
+
+---------------------------------------
+
++ ssc (meter)
+#NOTEDATA:;
+#STEPSTYPE:dance-single;
+#DIFFICULTY:Medium;
+#METER:8;
+(lines atomically, anywhere between '#NOTEDATA:' delimiter lines)
+
+---
+dance-single
+dance-double
+---
+Beginner
+Easy
+Medium
+Hard
+Challenge
+
+---------------------------------------
+
++ sm (line 4)
+#NOTES:
+     dance-single:
+     Fraxtil:
+     Challenge:
+     10:
+     0.704,0.808,0.067,0.525,0.884,585.000,9.000,71.000,12.000,1.000,0.000,0.704,0.808,0.067,0.525,0.884,585.000,9.000,71.000,12.000,1.000,0.000:
+
+(5 lines following each '#NOTES:' delimiter line, may or may not have leading whitespace)
+
+---
+dance-single
+dance-double
+---
+Beginner
+Easy
+Medium
+Hard
+Challenge
+---
+(5-22 numbers -> Groove Radar values, can be blank -> just ':')
