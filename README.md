@@ -18,18 +18,16 @@ Windows only
 
 ### Import selected data file into Google sheets
 
+__NOTE__: Google Drive will leave a copy of the CSV file laying around, it can be removed after import
+
 1. Open your [Google Drive](https://drive.google.com)
 2. Open a spreadsheet or create new (_New_ -> _Google Sheet_)
 3. _File_ -> _Import_ -> _Upload_
    * Navigate to your selected CSV file ("Songs to Sheet/output") and select it for import.
-4. In the _Import file_ window
-
-__NOTE__: Google Drive will leave a copy of the CSV file laying around, it can be removed after import
-
-   * Choose _Import location_
-   * Change _Separator type_ to __Custom__ and __;__ (semi-colon)
-   * Check _Convert text to numbers, dates and formulas_
-   * _Import Data_
+   * Choose __Import location__
+   * Change __Separator type__ to __Custom__ and "__;__" (semi-colon)
+   * Check __Convert text to numbers, dates and formulas__
+   * __Import Data__
    * Repeat for each selected file
 
 ### Use the provided macro to format your sheet
@@ -42,10 +40,10 @@ If you're unsure about using it, skip it and format the sheet manually.
    * Click __Untitled Project__ at the top and rename the project to something memorable
    * On the left, rename __code.gs__ to __macros.gs__ (click the 3 dots on hover)
    * Copy the text from "Songs to Sheet/Google Sheets Macro.txt"
-   * Replace the auto-generated code ("function myFunction() ...") with the copied text and _Save_
+   * Replace the auto-generated code ("function myFunction() ...") with the copied text and _Save__
    * Return to your Google Sheet
 3. _Tools_ -> _Macros_ -> _Import_
-   * Click _Add function_ to the right of _formatSongSheet_ and close the window
+   * Click __Add function__ to the right of __formatSongSheet__ and close the window
 4. _Tools_ -> _Macros_ -> _formatSongSheet_
    * Authorise the macro
    * _Continue_ -> Select/login to your account
