@@ -2,11 +2,11 @@
 
 An export facility for StepMania songs to Google Sheets.
 
-* Compile your installed songs' data into a CSV file for each mode which can be imported into any spreadsheeting software.
+* Compiles your installed songs' data into a CSV file for each mode which can be imported into any spreadsheeting software.
+* Detects simple errors in your songs' installations, including missing files and bad song definitions.
 * A macro is provided to format your data cleanly in Google Sheets specifically.
-* Detect simple errors in your songs' installations, including missing files and bad song definitions.
 
-StepMania Songs to Sheet is Windows only.
+StepMania Songs to Sheet is __Windows only__.
 
 Contact me on Discord: Fishlips13#1467
 
