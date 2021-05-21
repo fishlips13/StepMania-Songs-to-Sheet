@@ -3,16 +3,18 @@
 An export facility for StepMania songs to Google Sheets.
 
 Songs to Sheet will compile your installed songs' data into a CSV file for each mode which can be imported into any spreadsheeting software.
+
 A macro is provided to format your data cleanly in Google Sheets specifically.
+
 It will also detect simple errors in your songs' installations, including missing files and bad song definitions.
 
-Windows only
+Songs to Sheet is Windows only
 
-Discord: Fishlips13#1467
+Contact me on Discord: Fishlips13#1467
 
 ## Installation
 
-1. Download the latest zip from Releases
+1. Download the latest zip from __Releases__
 2. Extract to your StepMania top level folder (the one with the "Songs" folder)
 
 ## Usage
@@ -52,10 +54,10 @@ If you're unsure about using it, skip it and format the sheet manually.
    * Click __Add function__ to the right of __formatSongSheet__
    * Return to your Google Sheet
 4. _Tools_ -> _Macros_ -> _formatSongSheet_
-   * Authorise the macro
    * _Continue_ -> Select/login to your account
    * A window will popup, "Google hasn’t verified this app"
    * _Advanced_ -> _Go to YourProjectName (unsafe)_ -> _Allow_
+      * Visit [Google Permissions](https://myaccount.google.com/permissions) to remove the permission for a third-party app
    * Return to your Google Sheet
 5. _Tools_ -> _Macros_ -> _formatSongSheet_ (to run the macro for reals this time)
 6. Repeat for each sheet
