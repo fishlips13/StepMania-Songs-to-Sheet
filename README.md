@@ -55,7 +55,7 @@ If you're unsure about using it, skip it and format the sheet manually.
    * _Continue_ -> Select/login to your account
    * A window will popup, "Google hasn’t verified this app"
    * _Advanced_ -> _Go to YourProjectName (unsafe)_ -> _Allow_
-      * Visit [Google Permissions](https://myaccount.google.com/permissions) to remove the permission for a third-party app
+      * Visit your [Google Permissions](https://myaccount.google.com/permissions) to remove the permission for a third-party app
    * Return to your Google Sheet
 5. _Tools_ -> _Macros_ -> _formatSongSheet_ (to run the macro for reals this time)
 6. Repeat for each sheet
