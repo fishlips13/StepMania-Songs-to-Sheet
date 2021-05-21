@@ -116,3 +116,4 @@ dmypy.json
 # Project specific
 .vscode
 output/
+release
