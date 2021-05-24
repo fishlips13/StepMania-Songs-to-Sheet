@@ -11,8 +11,6 @@ An export facility for StepMania songs to Google Sheets.
 Supports __Singles__ and __Doubles__ modes only.
 __Windows__ only.
 
-Contact me on Discord: __Fishlips13#1467__
-
 ## Installation
 
 1. Download the latest zip from __Releases__
@@ -62,3 +60,7 @@ If you're unsure about using it, skip it and format the sheet manually.
    * Return to your Google Sheet
 5. _Tools_ -> _Macros_ -> _formatSongSheet_ (to run the macro for reals this time)
 6. Repeat for each sheet
+
+### Contact
+
+Discord: __Fishlips13#1467__
