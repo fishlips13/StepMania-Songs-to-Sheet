@@ -2,11 +2,14 @@
 
 An export facility for StepMania songs to Google Sheets.
 
-* Compiles your installed songs' data into CSVs file for each mode which can be imported into any spreadsheeting software.
+* Compiles your installed songs' data into CSV files for each mode which can be imported into any spreadsheeting software.
 * Detects errors in your songs' installations, including missing files and bad song definitions.
-* A macro is provided to quickly format your data cleanly in Google Sheets.
+* A macro is provided to quickly and cleanly format your data in Google Sheets.
 
-Only supports __Singles__ and __Double__ modes, and is __Windows__ only.
+![Example image](/songs-to-sheet-example.png)
+
+Supports __Singles__ and __Doubles__ modes only.
+__Windows__ only.
 
 Contact me on Discord: __Fishlips13#1467__
 
@@ -34,7 +37,7 @@ __NOTE__: After import, Google Drive will leave a copy of the data file laying a
    * Change __Separator type__ to __Custom__ and "__;__" (semi-colon)
    * Check __Convert text to numbers, dates and formulas__ (checked by default)
    * Click __Import Data__
-   * Repeat for each selected file (make sure to change your __Import location__ if you want multiple sheets in the same file)
+   * Repeat for each selected data file (make sure to set the __Import location__ for each)
 
 ### Use the provided macro to format your sheet
 
