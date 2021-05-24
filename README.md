@@ -61,6 +61,6 @@ If you're unsure about using it, skip it and format the sheet manually.
 5. _Tools_ -> _Macros_ -> _formatSongSheet_ (to run the macro for reals this time)
 6. Repeat for each sheet
 
-### Contact
+## Contact
 
 Discord: __Fishlips13#1467__
