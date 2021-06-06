@@ -56,9 +56,11 @@ song_files = []
 songs = []
 song_errors = []
 
-# Dir count in Songs
+# Directory count in Songs
 if songs_dir.exists():
+    packs_installed = set([i for i in songs_dir.iterdir() if i.is_dir()])
     songs_installed = set([j for i in songs_dir.iterdir() if i.is_dir() for j in i.iterdir() if j.is_dir()])
+    log_it(f"{len(packs_installed)} pack installs found")
     log_it(f"{len(songs_installed)} song installs found")
 else:
     log_it("No song installs found. Is Songs to Sheet in the correct location?")
@@ -76,7 +78,7 @@ dwi_files = songs_dir.glob("**/*.dwi")
 songs_done = set()
 for song_file in chain(ssc_files, sm_files, dwi_files):
 
-    # 1 song : 1 dir, ssc > sm > dwi
+    # 1 song : 1 directory, ssc > sm > dwi
     if song_file.parent in songs_done:
         continue
 
@@ -84,10 +86,15 @@ for song_file in chain(ssc_files, sm_files, dwi_files):
     if song_file.parent in songs_installed:
         songs_installed.remove(song_file.parent)
 
+    # Detecting songs in the wrong directory
+    if song_file.parts[-4] != "Songs":
+        song_errors.append(f"Bad install    - {song_file}")
+        continue
+
     song_files.append(song_file)
     songs_done.add(song_file.parent)
 
-# Any left over after culling are errors
+# Any left over after culling are empty folders
 for song_install in songs_installed:
     song_errors.append(f"Bad install    - {song_install}")
 
@@ -139,7 +146,7 @@ for song_file in tqdm(song_files,
             elif line.startswith("#FILE:"):  # dwi music
                 candidate_path = Path(line[6:-1])
                 music_path = Path()
-                #  Handling dwi file paths relative to StepMania base dir
+                #  Handling dwi file paths relative to StepMania base directory
                 if len(candidate_path.parts) != 1:
                     music_path = music_path / ".." / ".." / ".."
                 music_path = music_path / candidate_path
