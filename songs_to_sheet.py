@@ -91,9 +91,8 @@ for song_file in chain(ssc_files, sm_files, dwi_files):
 for song_install in songs_installed:
     song_errors.append(f"Bad install    - {song_install}")
 
-total_count = sum(1 for _ in song_files)
 # Nothing found, exit early
-if total_count == 0:
+if len(song_files) == 0:
     log_it("No song definitions found. Is Songs to Sheet in the correct location?")
     log_it("Exiting ...")
     sleep(3)
@@ -207,7 +206,7 @@ for song_file in tqdm(song_files,
         songs.append([title, title_translit, artist, song_pack, duration, charts])
     
     # Assume any other error is a bad song definition
-    except:
+    except Exception:
         song_errors.append(f"Bad definition - {song_file}")
 
 # Error logging
