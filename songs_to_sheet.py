@@ -8,7 +8,7 @@ from time import sleep
 def log_it(text, console_write = True):
     if console_write:
         print(text)
-    with open(log_path, "a") as f:
+    with open(log_path, "a", encoding="utf-8", errors="ignore") as f:
         f.write(text + "\n")
 
 # ID refs
@@ -22,6 +22,7 @@ expert_id = "Expert"
 edit_id   = "Edit"
 
 delimiter = ";"
+bad_characters = "☆"
 
 # Column headings (5 main + 6 difficulty)
 headings = ["Title", "Title (transliterated)", "Artist", "Song Pack", "Duration",
@@ -29,14 +30,14 @@ headings = ["Title", "Title (transliterated)", "Artist", "Song Pack", "Duration"
 
 # Lookup tables
 chart_mode_map = {"dance-single" : single_id, "dance-double" : double_id,
-                  "SINGLE"       : single_id, "DOUBLE"       : double_id}
+                  "single"       : single_id, "double"       : double_id}
 
-chart_difficulty_map = {"Beginner"  : novice_id,  "BEGINNER" : novice_id,
-                        "Easy"      : easy_id,    "BASIC"    : easy_id, 
-                        "Medium"    : medium_id,  "ANOTHER"  : medium_id,
-                        "Hard"      : hard_id,    "MANIAC"   : hard_id,
-                        "Challenge" : expert_id , "SMANIAC"  : expert_id,
-                        "Edit"      : edit_id}
+chart_difficulty_map = {"beginner"  : novice_id,  "beginner" : novice_id,
+                        "easy"      : easy_id,    "basic"    : easy_id, 
+                        "medium"    : medium_id,  "another"  : medium_id,
+                        "hard"      : hard_id,    "maniac"   : hard_id,
+                        "challenge" : expert_id , "smaniac"  : expert_id,
+                        "edit"      : edit_id}
 
 difficulty_indicies = {novice_id : 0, easy_id : 1, medium_id : 2, hard_id : 3, expert_id : 4, edit_id : 5}
 
@@ -49,7 +50,7 @@ singles_path = output_dir / f"{single_id}.csv"
 doubles_path = output_dir / f"{double_id}.csv"
 
 log_path = output_dir / "log.txt"
-with open(log_path, "w") as f:
+with open(log_path, "w", encoding="utf-8", errors="ignore") as f:
     f.write("StepMania Songs to Sheet Log:\n\n")
 
 song_files = []
@@ -89,6 +90,11 @@ for song_file in chain(ssc_files, sm_files, dwi_files):
     # Detecting songs in the wrong directory
     if song_file.parts[-4] != "Songs":
         song_errors.append(f"Bad install    - {song_file}")
+        continue
+
+    # Detecting bad characters in file names StepMania can't handle
+    if any(bad in part for part in song_file.parts for bad in bad_characters):
+        song_errors.append(f"Bad file chars - {song_file}")
         continue
 
     song_files.append(song_file)
@@ -158,26 +164,26 @@ for song_file in tqdm(song_files,
                     while not chart_mode or not chart_difficulty or not chart_meter:
                         line = next(lines_iter)
                         if line.startswith("#STEPSTYPE:"):
-                            chart_mode = line[11:-1]
+                            chart_mode = line[11:-1].lower()
                         elif line.startswith("#DIFFICULTY:"):
-                            chart_difficulty = line[12:-1]
+                            chart_difficulty = line[12:-1].lower()
                         elif line.startswith("#METER:"):
                             chart_meter = line[7:-1]
 
             elif song_file.suffix == ".sm":
                 if line.startswith("#NOTES:"):
-                    chart_mode = next(lines_iter).strip()[:-1]
+                    chart_mode = next(lines_iter).strip()[:-1].lower()
                     next(lines_iter)
-                    chart_difficulty = next(lines_iter).strip()[:-1]
+                    chart_difficulty = next(lines_iter).strip()[:-1].lower()
                     chart_meter = next(lines_iter).strip()[:-1]
 
             elif song_file.suffix == ".dwi":
                 if line.startswith("#SINGLE:") or line.startswith("#DOUBLE:"):
-                    chart_mode = line[1:7]
+                    chart_mode = line[1:7].lower()
                     diff_end_index = line.find(":", 8)
-                    chart_difficulty = line[8:diff_end_index]
+                    chart_difficulty = line[8:diff_end_index].lower()
                     chart_meter = line[diff_end_index + 1]
-                    
+
             # If we didn't find a chart, or it's not one we care about
             if not chart_mode or chart_mode not in chart_mode_map:
                 continue
@@ -201,6 +207,11 @@ for song_file in tqdm(song_files,
         # Some songs don't have music ... ... wha?
         if not music_path.exists():
             song_errors.append(f"Music missing  - {song_file}")
+            continue
+
+        # Detecting bad characters in music file names StepMania can't handle
+        if any(bad in part for part in music_path.parts for bad in bad_characters):
+            song_errors.append(f"Bad file chars - {song_file}")
             continue
 
         # Song duration formatted for mm:ss
