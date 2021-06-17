@@ -248,6 +248,12 @@ for song in songs:
     song[3] = song[3].replace("In The Groove", "ITG")
     song[3] = song[3].replace("Dancing Stage", "DS")
 
+    # Removing characters StepMania will filter out
+    for i in range(3):
+        song[i] = song[i].replace("\\", "")
+        song[i] = song[i].replace("#", "")
+        song[i] = song[i].replace(";", "")
+
     # Removing delimiter occurrences (we won't handle these)
     for i in range(4):
         song[i] = song[i].replace(delimiter, "")
