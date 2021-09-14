@@ -179,10 +179,10 @@ for song_file in tqdm(song_files,
 
             elif song_file.suffix == ".dwi":
                 if line.startswith("#SINGLE:") or line.startswith("#DOUBLE:"):
-                    chart_mode = line[1:7].lower()
-                    diff_end_index = line.find(":", 8)
-                    chart_difficulty = line[8:diff_end_index].lower()
-                    chart_meter = line[diff_end_index + 1]
+                    line_parts = line.split(":")
+                    chart_mode = line_parts[0][1:].lower()
+                    chart_difficulty = line_parts[1].lower()
+                    chart_meter = line_parts[2]
 
             # If we didn't find a chart, or it's not one we care about
             if not chart_mode or chart_mode not in chart_mode_map:
